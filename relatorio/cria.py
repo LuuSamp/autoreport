@@ -21,7 +21,28 @@ class Relatorio:
 
     def add_section(self, título, conteúdo):
         self.sections[título] = conteúdo
-
+    
+    def add_table(self, table):
+        head =  r"""
+                \begin{center}
+                \begin{tabular}{ c c c }
+                """
+        foot =  r"""
+                \end{tabular}
+                \end{center}
+                """
+        
+        linha = []
+        
+        for i, line in enumerate(table):
+            linha.append('&'.join([str(c) for c in line]))
+        
+        tex_table = r"\\".join(linha)
+        self.add_section("Table", head + tex_table + foot)
+        
+        
+            
+                
 
 
 
